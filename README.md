@@ -4,6 +4,22 @@ A full-stack booking platform clone built with **React (TypeScript), Next.js, an
 
 ---
 
+## Team Roles
+
+| Role                      | Responsibilities                                                                 |
+|---------------------------|---------------------------------------------------------------------------------|
+| **Project Manager**       | Oversees timelines, resource allocation, and stakeholder communication.         |
+| **Frontend Developer**    | Builds responsive UIs with React, implements state management, and consumes APIs.|
+| **Backend Developer**     | Implements RESTful APIs, handles business logic, and integrates with databases. |
+| **Database Administrator**| Designs schema, optimizes queries, and ensures data integrity and security.     |
+| **UI/UX Designer**        | Creates wireframes, prototypes, and maintains design system consistency.        |
+| **QA Engineer**           | Develops test plans, performs automated testing, and ensures bug-free releases. |
+| **DevOps Engineer**       | Manages CI/CD pipelines, cloud infrastructure, and deployment automation.       |
+| **Product Owner**         | Defines requirements, prioritizes features, and validates business value.       |
+| **Scrum Master**          | Facilitates Agile ceremonies and removes team impediments.                      |
+
+---
+
 ## UI Component Patterns
 
 Reusable components to ensure consistency and scalability:
@@ -17,18 +33,31 @@ Reusable components to ensure consistency and scalability:
 
 ---
 
-## Project Roles and Responsibilities
+## Database Design
 
-| Role                  | Key Responsibilities                                                                 |
-|-----------------------|-------------------------------------------------------------------------------------|
-| **Project Manager**   | Oversees timelines, resource allocation, and stakeholder communication.              |
-| **Frontend Devs**     | Implements React components, integrates APIs, and ensures responsive design.        |
-| **Backend Devs**      | Develops Django APIs, manages databases, and handles authentication.                |
-| **Designers**         | Creates Figma mockups, defines typography/colors, and ensures UI consistency.        |
-| **QA/Testers**        | Writes test cases, performs manual/automated testing, and tracks bugs.              |
-| **DevOps Engineers**  | Configures CI/CD pipelines, deploys to cloud platforms, and monitors performance.    |
-| **Product Owner**     | Prioritizes features, manages backlog, and aligns development with business goals.  |
-| **Scrum Master**      | Facilitates Agile ceremonies (stand-ups, retrospectives) and removes blockers.       |
+### Key Entities
+
+| Entity      | Important Fields                          | Relationships                              |
+|-------------|-------------------------------------------|--------------------------------------------|
+| **Users**   | `id`, `email`, `password_hash`, `role`    | One-to-many with Properties and Bookings   |
+| **Properties** | `id`, `title`, `price`, `location`, `owner_id` | Many-to-one with Users, one-to-many with Bookings |
+| **Bookings** | `id`, `property_id`, `user_id`, `dates`, `total_price` | Many-to-one with Users and Properties |
+| **Reviews** | `id`, `property_id`, `user_id`, `rating`, `comment` | Many-to-one with Users and Properties |
+| **Payments** | `id`, `booking_id`, `amount`, `status`, `method` | One-to-one with Bookings              |
+
+---
+
+## Feature Breakdown
+
+### Core Features
+
+| Feature               | Description                                                                 |
+|-----------------------|-----------------------------------------------------------------------------|
+| **User Management**   | Handles registration, authentication, and profile management (JWT auth).    |
+| **Property Management** | Allows hosts to create/update listings with images and amenities.          |
+| **Booking System**    | Enables date selection, availability checks, and reservation processing.    |
+| **Search & Filters**  | Location-based search with price/amenity filters using geospatial queries.  |
+| **Review System**     | Lets guests rate properties and leave feedback (1-5 stars + comments).      |
 
 ---
 
@@ -39,7 +68,7 @@ Reusable components to ensure consistency and scalability:
 2. **Visual Consistency**: Cohesive colors, typography, and spacing.  
 3. **Accessibility**: WCAG-compliant contrast and keyboard navigation.  
 
-### Key Features
+### Key Pages
 | Page                  | Description                                                                 |
 |-----------------------|-----------------------------------------------------------------------------|
 | **Property Listing**  | Grid of property cards with filters (price, location, amenities).           |
@@ -61,16 +90,28 @@ Identifying these properties early ensures design consistency across components 
 
 ---
 
-## Importance of User-Friendly Design
-A booking system's success hinges on:  
-1. **Reduced Friction**: Clear CTAs (e.g., "Book Now") and minimal form fields.  
-2. **Trust Signals**: High-quality images, reviews, and transparent pricing.  
-3. **Mobile Optimization**: 50%+ users book via mobile devices.  
+## API Security
+
+### Key Measures
+1. **Authentication**  
+   - JWT tokens with short expiration times  
+   - Why: Prevents unauthorized access to user accounts  
+
+2. **Authorization**  
+   - Role-based access control (RBAC)  
+   - Why: Ensures hosts can't modify others' properties  
+
+3. **Rate Limiting**  
+   - 100 requests/minute per IP via Nginx  
+   - Why: Prevents brute force/DDoS attacks  
+
+4. **Data Validation**  
+   - Input sanitization + prepared statements  
+   - Why: Blocks SQL injection and XSS attacks  
+
+5. **Payment Security**  
+   - PCI-compliant Stripe integration  
+   - Why: Protects sensitive financial data  
 
 ---
 
-## Getting Started
-```bash
-git clone https://github.com/r-repo/airbnb-clone.git
-cd frontend && npm install
-cd ../backend && pip install -r requirements.txt
