@@ -4,6 +4,34 @@ A full-stack booking platform clone built with **React (TypeScript), Next.js, an
 
 ---
 
+## Technology Stack
+
+The project utilizes the following technologies:
+
+- **Django**: A high-level Python web framework used for building RESTful APIs and handling server-side logic.
+- **PostgreSQL**: A powerful relational database system for storing and managing application data.
+- **GraphQL**: A query language for APIs that enables efficient data fetching and reduces over-fetching.
+- **React (TypeScript)**: A JavaScript library for building user interfaces with type safety provided by TypeScript.
+- **Next.js**: A React framework that enables server-side rendering and static site generation for better performance.
+- **JWT (JSON Web Tokens)**: Used for secure authentication and authorization between client and server.
+- **Stripe**: A payment processing platform integrated for handling secure transactions.
+- **Nginx**: A web server used for reverse proxying, load balancing, and rate limiting.
+
+---
+
+## CI/CD Pipeline
+
+CI/CD (Continuous Integration and Continuous Deployment) pipelines are essential for automating the software delivery process. They help ensure that code changes are automatically tested, built, and deployed to production environments, reducing manual errors and accelerating release cycles.
+
+For this project, the following tools could be used:
+
+- **GitHub Actions**: For automating build, test, and deployment workflows.
+- **Docker**: For containerizing the application and ensuring consistent environments across development, testing, and production.
+- **AWS/GCP**: Cloud platforms for hosting the application and managing infrastructure.
+- **SonarQube**: For continuous code quality inspection and static code analysis.
+
+---
+
 ## Project Roles and Responsibilities
 
 | Role                      | Responsibilities                                                                 |
@@ -112,6 +140,3 @@ Identifying these properties early ensures design consistency across components 
 5. **Payment Security**  
    - PCI-compliant Stripe integration  
    - Why: Protects sensitive financial data  
-
----
-
