@@ -4,7 +4,7 @@ A full-stack booking platform clone built with **React (TypeScript), Next.js, an
 
 ---
 
-## Team Roles
+## Project Roles and Responsibilities
 
 | Role                      | Responsibilities                                                                 |
 |---------------------------|---------------------------------------------------------------------------------|
